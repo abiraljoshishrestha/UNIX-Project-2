@@ -1,0 +1,118 @@
+#!/bin/bash
+
+
+x=0
+y=1
+secret=1738		#Setting the secret key.
+while [ $x == 0 ]
+do
+	echo -e "Enter the secret key:- \c"
+	read key
+	if [ $secret == $key ]
+	then
+	echo "The secret key has matched."
+	x=1
+	else
+		if [ $y -lt 3 ]
+		then
+			echo "The secret key didn't match, try again."
+			((y++))
+		else
+			echo "Program has been terminated."
+			exit
+			break
+		fi
+	fi
+done 
+
+
+echo "Welcome, the program has been initialized." $1 $2		
+echo "Program initialized on:- $(date)"		#Displays time and date
+
+
+choice=y
+while [ $choice == "y" ]
+do
+	echo "Country | Codes"		#Inputting the country codes
+	echo "Japan | JPN"
+	echo "Argentina | ARG"
+	echo "Germany | GER"
+	echo "France | FRA"
+	echo "Brazil | BRZ"
+
+while [ True ]
+do
+	echo -e "Guess the best football team:- \c"
+	read code
+	case $code in
+	"JPN") echo "Japan is the most successful nation in the World Cup tournaments having qualified for six tournaments so far. They are also the most successful team in terms of Asian continental competitions."
+	break
+	;;
+
+	"ARG") echo "Argentina is one of the most successful teams from the South American continent, having won the tournament twice and the Copa America 14 times."
+	break
+	;;
+
+	"GER") echo "Germany is one of the most successful teams in the World Cup, having qualified for 19 out of 21 tournaments held and winning four world titles."
+	break
+	;;
+
+	"FRA") echo "France is a major player at the FIFA World Cup, having won 2 titles, including the 2018 tournament."
+	break
+	;;
+
+	"BRZ") echo "Brazil is the most successful team in the FIFA World Cup, having participated in all tournaments and winning five titles."
+	break
+	;;
+
+	*) echo "You have entered an invalid code, try again!"
+esac
+done
+
+echo "Player | Code"		#Setting the player's codes
+echo "Kagawa | KAG"
+echo "Messi | MES"
+echo "Reus | REU"
+echo "Lloris | LOR"
+echo "Coutinho | COU"
+
+while [ true ]
+do
+	echo -e "Enter three codes for players: \c"
+	read player_1 player_2 player_3
+	echo -e "The players selected by you are: \c"
+	echo -e "1. $player_1"
+	echo -e "2. $player_2"
+	echo -e "3. $player_3"
+
+	echo -e "Select one player: \c"
+	read player_code
+
+	case $player_code in
+	"KAG") echo -e "Shinji Kagawa was selected."
+		cat Kagawa.txt		#Importing the .txt files
+	break
+	;;
+	"MES") echo -e "Lionel Messi was selected."
+		cat Messi.txt
+	break
+	;;
+	"COU") echo -e "Philippe Countinho was selected."
+		cat Coutinho.txt
+	break
+	;;
+	"REU") echo -e "Marco Reus was selected."
+		cat Reus.txt
+	break
+	 ;;
+	"LOR") echo -r "Hugo Lloris was selected."
+		cat Lloris.txt
+	break
+	;;
+	*) echo -e "The code was invalid, try again: \c"
+	esac
+done
+
+echo -e "Do you want to restart the program? (y/n) \c"	#Command to restart the program
+read choice
+done
